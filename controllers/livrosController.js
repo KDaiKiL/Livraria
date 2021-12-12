@@ -17,6 +17,7 @@ const livrosController = {
     },
     livrosUpp: async (req, res) => {
         const { titulo, quantidade_paginas, autor, ano_lancamento, estoque } = req.body
+        const { id } = req.params
         await Livro.update({
             titulo,
             quantidade_paginas,
@@ -25,10 +26,18 @@ const livrosController = {
             estoque
         }, {
             where: {
-                id: req.params
+                id
             }
         })
     },
+    livrosDown: async (req, res) => {
+        const { id } = req.params
+        await Livro.destroy({
+            where: {
+                id
+            }
+        })
+    }
 }
 
 module.exports = livrosController
