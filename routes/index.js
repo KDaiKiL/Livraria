@@ -7,8 +7,9 @@ router.get("/", function (req, res, next) {
 });
 
 router.get("/livros", livrosController.index)
-router.post("/livro/new", livrosController.newBook)
-router.put("/livros/:id", livrosController.livrosUpp)
+router.get("/livros/:id", livrosController.book)
+router.post("/livros/new", livrosController.newBook)
+router.put("/livros/update/:id", livrosController.livrosUpp)
 router.delete("/livros/delete/:id", livrosController.livrosDown)
 
 module.exports = router;
